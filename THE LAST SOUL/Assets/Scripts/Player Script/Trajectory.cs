@@ -19,21 +19,22 @@ public class Trajectory : MonoBehaviour
      private Color color;
      float timeStamp;
 
-     private SpriteRenderer spriteRenderer;
+    
     // Start is called before the first frame update
     void Start()
     {
         Hide();
         PrepareDots();
         
-        spriteRenderer = dotPrefab.GetComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.red;
+      
+       
     }
 
 
 
     void PrepareDots()
     {
+      
         dotsList = new Transform[dotsNumber];
         for (int i = 0; i < dotsNumber; i++)
         {
