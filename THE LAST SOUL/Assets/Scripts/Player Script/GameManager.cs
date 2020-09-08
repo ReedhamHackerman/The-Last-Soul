@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
-    //ball and drag 
-    #region BallComponent 
+
+
+    #region BallComponent
 
     private Vector2 startPoint;
     private Vector2 endPoint;
@@ -17,68 +12,95 @@ public class GameManager : MonoBehaviour
     private Vector2 force;
     private float distance;
     [SerializeField] private float pushForce = 4f;
+
     #endregion
+
+
+    public static GameManager Instance;
+    public Ball ball;
+
+    private Camera cam;
+
+    private bool isDragging;
+
+    [SerializeField] private int jumpCount = 2;
+    private bool canJump = true;
 
     public Trajectory trajectory;
 
-    Camera cam;
-    public Ball ball;
-   
-    private bool isDragging = false;
-    void Awake()
+    private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
+        if (Instance == null) Instance = this;
     }
-    void Start()
+
+    private void Start()
     {
         cam = Camera.main;
         ball.DeactivateRb();
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (canJump)
         {
-            isDragging = true;
-            OnDragStart();
+
+            if (Input.GetMouseButtonDown(0) )
+         {
+           
+                isDragging = true;
+                OnDragStart();
+            
         }
+
         if (Input.GetMouseButtonUp(0))
         {
             isDragging = false;
             OnDragEnd();
         }
 
-        if (isDragging)
-        {
-            OnDrag();
+       
+            if (isDragging)
+            {
+                OnDrag();
+            }
         }
+        
+            
     }
 
-    void OnDragStart()
+    private void OnDragStart()
     {
         ball.DeactivateRb();
         startPoint = cam.ScreenToWorldPoint(Input.mousePosition);
         trajectory.Show();
+      
     }
 
-    void OnDrag()
+    private void OnDrag()
     {
         endPoint = cam.ScreenToWorldPoint(Input.mousePosition);
         distance = Vector2.Distance(startPoint, endPoint);
         direction = (startPoint - endPoint).normalized;
         force = direction * distance * pushForce;
-        Debug.DrawLine(startPoint,endPoint);
-        
-        trajectory.UpdateDots(ball.BallPos,force);
+        Debug.DrawLine(startPoint, endPoint);
+        trajectory.UpdateDots(ball.BallPos, force);
+       
     }
 
-    void OnDragEnd()
+    private void OnDragEnd()
     {
         ball.ActivateRb();
         ball.Push(force);
         trajectory.Hide();
+        jumpCount--;
+        if (jumpCount==0)
+        {
+            canJump = false;
+        }
+        Debug.Log(jumpCount);
+        
     }
+
+    //ball and drag 
+
 }
