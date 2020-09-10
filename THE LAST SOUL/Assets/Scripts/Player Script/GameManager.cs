@@ -2,29 +2,15 @@
 
 public class GameManager : MonoBehaviour
 {
-
-
-    #region BallComponent
-
-    private Vector2 startPoint;
-    private Vector2 endPoint;
-    private Vector2 direction;
-    private Vector2 force;
-    private float distance;
-    [SerializeField] private float pushForce = 4f;
-
-    #endregion
-
-
     public static GameManager Instance;
     public Ball ball;
-
+    [SerializeField] public float pushForce ;
     private Camera cam;
+    private bool canJump = true;
 
     private bool isDragging;
 
     [SerializeField] private int jumpCount = 2;
-    private bool canJump = true;
 
     public Trajectory trajectory;
 
@@ -43,29 +29,21 @@ public class GameManager : MonoBehaviour
     {
         if (canJump)
         {
-
-            if (Input.GetMouseButtonDown(0) )
-         {
-           
+            if (Input.GetMouseButtonDown(0))
+            {
                 isDragging = true;
                 OnDragStart();
-            
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            isDragging = false;
-            OnDragEnd();
-        }
-
-       
-            if (isDragging)
-            {
-                OnDrag();
             }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                isDragging = false;
+                OnDragEnd();
+            }
+
+
+            if (isDragging) OnDrag();
         }
-        
-            
     }
 
     private void OnDragStart()
@@ -73,7 +51,6 @@ public class GameManager : MonoBehaviour
         ball.DeactivateRb();
         startPoint = cam.ScreenToWorldPoint(Input.mousePosition);
         trajectory.Show();
-      
     }
 
     private void OnDrag()
@@ -84,7 +61,6 @@ public class GameManager : MonoBehaviour
         force = direction * distance * pushForce;
         Debug.DrawLine(startPoint, endPoint);
         trajectory.UpdateDots(ball.BallPos, force);
-       
     }
 
     private void OnDragEnd()
@@ -93,14 +69,21 @@ public class GameManager : MonoBehaviour
         ball.Push(force);
         trajectory.Hide();
         jumpCount--;
-        if (jumpCount==0)
-        {
-            canJump = false;
-        }
+        if (jumpCount == 0) canJump = false;
         Debug.Log(jumpCount);
-        
     }
 
-    //ball and drag 
 
+    #region BallComponent
+
+    private Vector2 startPoint;
+    private Vector2 endPoint;
+    private Vector2 direction;
+    private Vector2 force;
+    private float distance;
+    
+
+    #endregion
+
+    //ball and drag 
 }
