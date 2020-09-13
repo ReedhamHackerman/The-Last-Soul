@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float pushForce ;
     private Camera cam;
     private bool canJump = true;
-
+    public TimeManager timeManager;
     private bool isDragging;
 
     [SerializeField] private int jumpCount = 2;
@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(Time.timeScale);
         cam = Camera.main;
         ball.DeactivateRb();
     }
@@ -33,6 +34,8 @@ public class GameManager : MonoBehaviour
             {
                 isDragging = true;
                 OnDragStart();
+                
+               
             }
 
             if (Input.GetMouseButtonUp(0))
@@ -44,6 +47,7 @@ public class GameManager : MonoBehaviour
 
             if (isDragging) OnDrag();
         }
+       
     }
 
     private void OnDragStart()
@@ -61,6 +65,7 @@ public class GameManager : MonoBehaviour
         force = direction * distance * pushForce;
         Debug.DrawLine(startPoint, endPoint);
         trajectory.UpdateDots(ball.BallPos, force);
+        timeManager.DoSlowMotion();
     }
 
     private void OnDragEnd()
@@ -71,6 +76,14 @@ public class GameManager : MonoBehaviour
         jumpCount--;
         if (jumpCount == 0) canJump = false;
         Debug.Log(jumpCount);
+        do
+        {
+            Debug.Log(Time.timeScale);
+            Time.timeScale += 0.825f;
+           
+            Debug.Log(Time.timeScale);
+        } while (Time.timeScale >= 2f);
+        
     }
 
 
