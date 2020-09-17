@@ -48,7 +48,10 @@ public class GameManager : MonoBehaviour
             }
             if (isDragging) OnDrag();
         }
-       
+       if(Input.GetKeyDown(KeyCode.J))
+        {
+            ball.NextScene();
+        }
     }
 
     private void OnDragStart()

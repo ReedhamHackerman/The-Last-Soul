@@ -40,12 +40,17 @@ public class Ball : MonoBehaviour
 
     public void WinningCondion()
     {
-        if (SoulCount == 6)
+        if (SoulCount == 20)
         {
             SceneManager.LoadScene(1);
         }
     }
-
+    public void NextScene()
+    {
+       
+            SceneManager.LoadScene(2);
+        
+    }
     private void RestartScene()
     {
         
