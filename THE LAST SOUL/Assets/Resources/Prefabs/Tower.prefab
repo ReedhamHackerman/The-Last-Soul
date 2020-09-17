@@ -214,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681981708324937966}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.68, y: -0.110159636, z: -7.8237567}
+  m_LocalPosition: {x: 0.9, y: -0.110159636, z: -7.8237567}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 681981708190213879}
@@ -267,7 +267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681981708513182585}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: -0.110159636, z: -7.8237567}
+  m_LocalPosition: {x: -1.2, y: -0.110159636, z: -7.8237567}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 681981707959330097}
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 681981709821055598}
   m_Layer: 0
   m_Name: Tower
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,7 +320,7 @@ Transform:
   m_GameObject: {fileID: 681981709821055597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.7782, y: -0.40274, z: -12.73255}
-  m_LocalScale: {x: 0.75, y: 0.72483, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 681981709967466237}
   - {fileID: 681981708190213879}

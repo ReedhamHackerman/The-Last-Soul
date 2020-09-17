@@ -7,6 +7,7 @@ TagManager:
   - Obstacle
   - Spike
   - Unfriendly
+  - Soul
   layers:
   - Default
   - TransparentFX

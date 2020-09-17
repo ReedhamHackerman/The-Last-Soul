@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     {
 
 
-       
+        ball.WinningCondion();
 
         if (canJump)
         {

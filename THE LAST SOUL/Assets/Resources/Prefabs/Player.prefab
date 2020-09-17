@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 5552519550114283925}
   - component: {fileID: 3650018760287715284}
   - component: {fileID: 8316521119946560405}
-  - component: {fileID: -230220540764561807}
-  - component: {fileID: 8061852360963713154}
+  - component: {fileID: 5817120671820476213}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Soul
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6757085260419338118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.9056845, y: -3.6367278, z: -18.480642}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.797, y: -3.6367278, z: -18.480642}
+  m_LocalScale: {x: 0.958, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,31 +95,10 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.013593094, y: 0.13937283}
   serializedVersion: 2
-  m_Radius: 2.585
---- !u!50 &-230220540764561807
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6757085260419338118}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &8061852360963713154
+  m_Radius: 1.8255365
+--- !u!114 &5817120671820476213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,8 +107,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6757085260419338118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27d8d8ef836119640b427e44c4f566d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ab7d78b3bd4c6344860ad7190c1bb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  c2d: {fileID: 0}

@@ -14,7 +14,7 @@ public class Ball : MonoBehaviour
     {
         get { return transform.position; }
     }
-
+    public int SoulCount = 0;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,10 +24,25 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Unfriendly"))
+        if (collision.gameObject.CompareTag("Unfriendly"))
         {
             state = State.died;
             RestartScene();
+        }
+       
+
+        if (collision.gameObject.CompareTag("Soul"))
+        {
+            ++SoulCount;
+            Debug.Log(SoulCount);
+        }
+    }
+
+    public void WinningCondion()
+    {
+        if (SoulCount == 6)
+        {
+            SceneManager.LoadScene(1);
         }
     }
 
