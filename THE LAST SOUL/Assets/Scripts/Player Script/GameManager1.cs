@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+﻿using UnityEditorInternal;
+using UnityEngine;
 
-public class GameManager1 : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static GameManager1 Instance;
+    public static GameManager Instance;
     public Ball ball;
     [SerializeField] public float pushForce;
     private Camera cam;
     private bool canJump = true;
     public TimeManager timeManager;
     private bool isDragging;
-
+  
     [SerializeField] private int jumpCount = 2;
 
     public Trajectory trajectory;
@@ -28,6 +29,10 @@ public class GameManager1 : MonoBehaviour
 
     private void Update()
     {
+
+
+       
+
         if (canJump)
         {
             if (Input.GetMouseButtonDown(0))
@@ -36,17 +41,14 @@ public class GameManager1 : MonoBehaviour
                 OnDragStart();
 
             }
-
             if (Input.GetMouseButtonUp(0))
             {
                 isDragging = false;
                 OnDragEnd();
             }
-
-
             if (isDragging) OnDrag();
         }
-        
+       
     }
 
     private void OnDragStart()
@@ -97,5 +99,5 @@ public class GameManager1 : MonoBehaviour
 
     #endregion
 
-    //ball and drag 
+   
 }

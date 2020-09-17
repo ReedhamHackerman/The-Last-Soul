@@ -12,15 +12,29 @@ public class AutoFireLeft : MonoBehaviour
     public Transform barrel;
 
     float timeBetweenShots;
-    GameObject cannonBallPrefab;
-
+    public GameObject cannonBallPrefab;
+    public bool left;
     bool onCooldown;
     float cooldownCounter;
-
+    private int side ;
+    public GameObject parent;
     void Start()
     {
         timeBetweenShots = Random.Range(timeBetweenShotsRange.x, timeBetweenShotsRange.y);
-        cannonBallPrefab = Resources.Load<GameObject>("Prefabs/Bullets");
+        // cannonBallPrefab = Resources.Load<GameObject>("Prefabs/Bullets");
+        CheckSideOfAim();
+    }
+
+    private void CheckSideOfAim()
+    {
+        if (left)
+        {
+            side = -1;
+        }
+        else
+        {
+            side = 1;
+        }
     }
 
     void Update()
@@ -51,8 +65,8 @@ public class AutoFireLeft : MonoBehaviour
 
     void Fire()
     {
-        GameObject ball = GameObject.Instantiate(cannonBallPrefab, firePoint.position, Quaternion.identity);
-        Vector2 forceVector = -barrel.right * fireForce;
+        GameObject ball = GameObject.Instantiate(cannonBallPrefab, firePoint.position, Quaternion.identity,parent.transform);
+        Vector2 forceVector = side*barrel.right * fireForce;
         ball.GetComponent<Rigidbody2D>().AddForce(forceVector, ForceMode2D.Impulse);
         
         onCooldown = true;

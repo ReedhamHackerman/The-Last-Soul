@@ -10,7 +10,7 @@ public class AutoFireCannon : MonoBehaviour
 
     public Transform firePoint;
     public Transform barrel;
-
+    public GameObject Parent;
     float timeBetweenShots;
     GameObject cannonBallPrefab;
 
@@ -19,6 +19,7 @@ public class AutoFireCannon : MonoBehaviour
 
     void Start()
     {
+        
         timeBetweenShots = Random.Range(timeBetweenShotsRange.x, timeBetweenShotsRange.y);
         cannonBallPrefab = Resources.Load<GameObject>("Prefabs/CannonBall");
     }
@@ -51,7 +52,7 @@ public class AutoFireCannon : MonoBehaviour
 
     void Fire()
     {
-        GameObject ball = GameObject.Instantiate(cannonBallPrefab, firePoint.position, Quaternion.identity);
+        GameObject ball = GameObject.Instantiate(cannonBallPrefab, firePoint.position, Quaternion.identity,Parent.transform);
         Vector2 forceVector = barrel.right * fireForce;
         ball.GetComponent<Rigidbody2D>().AddForce(forceVector, ForceMode2D.Impulse);
         onCooldown = true;
