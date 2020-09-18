@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartingScene.unity
     guid: a9acd2996eb81a541865975c95289f40
+  - enabled: 1
+    path: Assets/Scenes/First-Stage.unity
+    guid: 5919f846b9cc8cb4faabc9a3283623df
+  - enabled: 1
+    path: Assets/Scenes/DeathSceneFor!.unity
+    guid: aa874c96acb8a3d448fc44d353f8d8a8
   m_configObjects: {}
